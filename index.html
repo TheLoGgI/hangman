@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+    <title>Hangman</title>
+    <!-- <link href="css/style.css" rel="stylesheet"/> -->
+    <style>
+        body, button, input {
+            font-size: 1.2rem;
+            font-family: 'roboto slab', 'abel',  serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'roboto slab', 'abel',  serif;
+        }
+        .hangman {
+            max-width: 600px;
+            margin: 4rem auto;
+        }
+
+        input {
+            font-size: 1.2rem;
+            padding: .5rem;
+            margin: .5rem .5rem;
+            border: none;
+            border-bottom: 2px solid black;
+            outline: none;
+            text-transform: uppercase;
+        }
+
+        .alfhabet {
+            display: grid;
+            width: 100%;
+            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            grid-template-rows: auto;
+            gap: .5rem;
+        }
+
+        input:focus {
+            border-bottom: 4px solid rgb(59, 187, 59);
+        }
+
+        #message {
+            color: rgb(78, 80, 235);
+        }
+
+        .invalid-letter, .invalid-letter:focus {
+            border-bottom: 4px solid rgb(187, 59, 59);
+        }
+
+        #ground {
+            height: 10px;
+        }
+
+        #pillar {
+            width: 0px;
+            width: 12px;
+        }
+        #head {
+            /* stroke-dasharray: 200; */
+            display: none;
+            /* stroke-dasharray: 4;
+            stroke-dashoffset: 0;
+            animation: dash 10s ease forwards infinite alternate-reverse; */
+        }
+
+        #rope {
+            display: none;
+        }
+
+        #neck {
+            /* display: none; */
+            height: 0px;
+        }
+        #right-arm, #left-arm, #body, #left-leg, #right-leg {
+            height: 0px;
+        }
+
+        #right-arm {
+            height: initial !important;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 10;
+                stroke-dasharray: 200;
+                /* stroke:rgb(59, 187, 59); */
+                }       
+            }       
+            
+    </style>
+</head>
+<body>
+    <div class="hangman">
+        <h1>Hæng manden</h1>
+            <div class="drawing">
+                <svg id="hangman" xmlns="http://www.w3.org/2000/svg" width="195.353" height="262" viewBox="0 0 195.353 262">
+                    <g id="galio" transform="translate(-35 -1304)">
+                      <rect id="ceil" width="134" height="12" transform="translate(79 1304)"/>
+                      <rect id="pillar" width="12" height="241" transform="translate(79 1316)"/>
+                      <rect id="ground" width="111" height="9" transform="translate(35 1557)"/>
+                      <line id="rope" y2="43" transform="translate(193 1313)" fill="none" stroke="#000" stroke-width="2"/>
+                    </g>
+                    <g id="man" transform="translate(-35 -1304)">
+                      <g id="head" transform="translate(165 1356)" fill="#fff" stroke="#000" stroke-width="2">
+                        <circle cx="28" cy="28" r="28" stroke="none"/>
+                        <circle cx="28" cy="28" r="27" fill="none"/>
+                      </g>
+                      <rect id="neck" width="4" height="15" transform="translate(191 1411)"/>
+                      <rect id="right-arm" width="4" height="39" rx="2" transform="matrix(0.259, -0.966, 0.966, 0.259, 191.647, 1428.885)"/>
+                      <rect id="left-arm" width="4" height="39" rx="2" transform="matrix(-0.259, -0.966, 0.966, -0.259, 156.682, 1438.979)"/>
+                      <rect id="body" width="4" height="42" rx="2" transform="translate(195 1468) rotate(180)"/>
+                      <rect id="left-leg" width="4" height="42" rx="2" transform="translate(165.302 1496.263) rotate(-135)"/>
+                      <rect id="right-leg" width="4" height="42" rx="2" transform="translate(223.527 1492.435) rotate(135)"/>
+                    </g>
+                  </svg>
+                  
+            </div>
+        <div class="userguess" id="guessword"></div>
+        <p id="message"></p>
+        <div class="alfhabet" id="alfhabetletters"></div>
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
